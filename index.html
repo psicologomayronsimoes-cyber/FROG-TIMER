@@ -1,0 +1,897 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Sapo do Tempo — Lago Encantado</title>
+    <meta name="description" content="Timer visual com sapinhos para crianças, de forma suave e acolhedora.">
+    <style>
+      #scene-flies { display: none !important; }
+      /* ===== RODAPÉ PROFISSIONAL ===== */
+      .app-footer {
+        margin-top: 32px;
+        padding: 18px 16px 12px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+      }
+      .app-footer p {
+        margin: 0;
+        padding: 2px 0;
+        font-size: 10px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: rgba(80, 100, 80, 0.6);
+        line-height: 1.5;
+      }
+      .app-footer strong {
+        font-weight: 700;
+        color: rgba(60, 90, 60, 0.75);
+      }
+      /* Modo escuro */
+      body.night-mode .app-footer p {
+        color: rgba(180, 210, 180, 0.45);
+      }
+      body.night-mode .app-footer strong {
+        color: rgba(180, 210, 180, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- ===== TAB: TIMER ===== -->
+      <div id="tab-timer" class="tab-panel active">
+        <div class="tab-scroll">
+
+          <!-- Cena -->
+          <div id="scene">
+            <div id="sky">
+              <div class="sun" id="sun"></div>
+              <div class="moon" id="moon">
+                <div class="moon-crater" style="top:20%;left:25%;width:18%;height:18%"></div>
+                <div class="moon-crater" style="top:55%;left:60%;width:12%;height:12%"></div>
+                <div class="moon-crater" style="top:40%;left:15%;width:10%;height:10%"></div>
+              </div>
+              <div class="clouds" id="clouds">
+                <div class="cloud" style="top:12%;left:8%;width:90px;animation-delay:0s;animation-duration:28s"></div>
+                <div class="cloud" style="top:18%;left:50%;width:70px;animation-delay:-12s;animation-duration:22s"></div>
+                <div class="cloud" style="top:8%;left:75%;width:55px;animation-delay:-6s;animation-duration:35s"></div>
+              </div>
+              <div class="stars" id="stars"><div class="star-dot" style="width: 1.705678px; height: 1.705678px; left: 82.732717%; top: 26.221725%; --dur: 4.020498979870807s; --delay: 1.6232891687362745s;"></div><div class="star-dot" style="width: 3.731399px; height: 3.731399px; left: 10.399255%; top: 47.764986%; --dur: 2.6810498568032264s; --delay: 1.433674645820071s;"></div><div class="star-dot" style="width: 2.557457px; height: 2.557457px; left: 51.356058%; top: 74.466108%; --dur: 4.1303599917193s; --delay: 1.614465791640896s;"></div><div class="star-dot" style="width: 2.811796px; height: 2.811796px; left: 91.913732%; top: 2.47482%; --dur: 3.381389108621118s; --delay: 2.9468015002146952s;"></div><div class="star-dot" style="width: 3.678096px; height: 3.678096px; left: 72.467209%; top: 76.646726%; --dur: 2.440561539495092s; --delay: 0.40404770217100694s;"></div><div class="star-dot" style="width: 3.44192px; height: 3.44192px; left: 22.385425%; top: 41.782277%; --dur: 4.1507090176931705s; --delay: 2.1461215069331345s;"></div><div class="star-dot" style="width: 2.814207px; height: 2.814207px; left: 94.036278%; top: 34.68443%; --dur: 4.143119716942017s; --delay: 2.2138049160565503s;"></div><div class="star-dot" style="width: 2.532873px; height: 2.532873px; left: 27.51213%; top: 61.00253%; --dur: 2.4857527167578892s; --delay: 2.098450152583985s;"></div><div class="star-dot" style="width: 2.585897px; height: 2.585897px; left: 33.690682%; top: 2.798009%; --dur: 3.6487216856420157s; --delay: 1.48559832061528s;"></div><div class="star-dot" style="width: 3.645688px; height: 3.645688px; left: 2.20984%; top: 46.14182%; --dur: 4.144950297655989s; --delay: 2.3900678547317318s;"></div><div class="star-dot" style="width: 1.947067px; height: 1.947067px; left: 11.594016%; top: 6.630946%; --dur: 3.4208170518184704s; --delay: 2.5882336134211856s;"></div><div class="star-dot" style="width: 2.726479px; height: 2.726479px; left: 64.642489%; top: 79.954718%; --dur: 3.0387929572020766s; --delay: 2.9969881510126726s;"></div><div class="star-dot" style="width: 3.386686px; height: 3.386686px; left: 71.66057%; top: 38.059373%; --dur: 4.854442508895831s; --delay: 0.6881422729961755s;"></div><div class="star-dot" style="width: 2.695233px; height: 2.695233px; left: 36.770877%; top: 9.233168%; --dur: 2.88207304236658s; --delay: 1.9303336759560756s;"></div><div class="star-dot" style="width: 1.871866px; height: 1.871866px; left: 29.845026%; top: 48.554669%; --dur: 4.952188077688395s; --delay: 0.23520074135948965s;"></div><div class="star-dot" style="width: 2.111237px; height: 2.111237px; left: 45.801771%; top: 77.832942%; --dur: 3.4042868830669235s; --delay: 3.5213549617612134s;"></div><div class="star-dot" style="width: 3.197869px; height: 3.197869px; left: 47.998162%; top: 77.138917%; --dur: 4.170542857607286s; --delay: 2.6775730573901475s;"></div><div class="star-dot" style="width: 1.934893px; height: 1.934893px; left: 18.940273%; top: 79.313117%; --dur: 2.4538793721285748s; --delay: 0.8391287637074836s;"></div><div class="star-dot" style="width: 2.367612px; height: 2.367612px; left: 0.43324%; top: 15.489984%; --dur: 4.88218827666844s; --delay: 3.4366662717826197s;"></div><div class="star-dot" style="width: 2.645742px; height: 2.645742px; left: 95.934392%; top: 71.07515%; --dur: 4.869598194579182s; --delay: 3.0685874549145304s;"></div><div class="star-dot" style="width: 1.978136px; height: 1.978136px; left: 83.564549%; top: 77.867959%; --dur: 3.990907308999029s; --delay: 1.195910472357085s;"></div><div class="star-dot" style="width: 3.266952px; height: 3.266952px; left: 43.982877%; top: 34.141576%; --dur: 4.9861230557615315s; --delay: 1.1503732154917659s;"></div><div class="star-dot" style="width: 1.591099px; height: 1.591099px; left: 22.119347%; top: 70.976502%; --dur: 4.8465866006401255s; --delay: 0.6011286150207993s;"></div><div class="star-dot" style="width: 2.047544px; height: 2.047544px; left: 98.920865%; top: 81.718188%; --dur: 3.6547996291036813s; --delay: 0.5790557010380475s;"></div><div class="star-dot" style="width: 2.139215px; height: 2.139215px; left: 29.702987%; top: 71.085207%; --dur: 4.309542995735604s; --delay: 3.947871431755765s;"></div><div class="star-dot" style="width: 1.519914px; height: 1.519914px; left: 55.554201%; top: 25.925561%; --dur: 2.504529364740124s; --delay: 0.7243631968154318s;"></div><div class="star-dot" style="width: 3.452544px; height: 3.452544px; left: 54.785016%; top: 58.982298%; --dur: 4.67632397200604s; --delay: 0.541852822877217s;"></div><div class="star-dot" style="width: 1.613981px; height: 1.613981px; left: 13.404856%; top: 59.49272%; --dur: 3.1598601300178983s; --delay: 3.1401417011633885s;"></div><div class="star-dot" style="width: 2.531003px; height: 2.531003px; left: 19.806251%; top: 26.653178%; --dur: 4.559448539336858s; --delay: 1.5942847636309225s;"></div><div class="star-dot" style="width: 3.588697px; height: 3.588697px; left: 87.67498%; top: 52.467495%; --dur: 2.3328793835329384s; --delay: 2.432772663228973s;"></div><div class="star-dot" style="width: 3.268547px; height: 3.268547px; left: 90.779178%; top: 69.474478%; --dur: 4.075826450671674s; --delay: 1.9624522302082563s;"></div><div class="star-dot" style="width: 2.352287px; height: 2.352287px; left: 71.16219%; top: 34.516352%; --dur: 4.513232717568379s; --delay: 0.7330480389881506s;"></div><div class="star-dot" style="width: 2.354831px; height: 2.354831px; left: 32.108887%; top: 42.316425%; --dur: 3.5419054137494292s; --delay: 0.3318233089843554s;"></div><div class="star-dot" style="width: 2.671483px; height: 2.671483px; left: 42.071056%; top: 54.708969%; --dur: 2.1635017359398105s; --delay: 0.779696258991498s;"></div><div class="star-dot" style="width: 1.844656px; height: 1.844656px; left: 77.270513%; top: 77.637205%; --dur: 3.8003911133181387s; --delay: 0.29056091168899734s;"></div><div class="star-dot" style="width: 3.751512px; height: 3.751512px; left: 36.953126%; top: 13.144766%; --dur: 2.5622377266916083s; --delay: 3.7809324556407873s;"></div><div class="star-dot" style="width: 2.463683px; height: 2.463683px; left: 63.224854%; top: 34.526979%; --dur: 4.927528044771981s; --delay: 0.08135988941239036s;"></div><div class="star-dot" style="width: 3.405984px; height: 3.405984px; left: 29.003534%; top: 37.733798%; --dur: 3.079121986233776s; --delay: 3.101425070186771s;"></div><div class="star-dot" style="width: 1.882009px; height: 1.882009px; left: 16.136601%; top: 7.801931%; --dur: 2.4525383224769275s; --delay: 3.2902080308284027s;"></div><div class="star-dot" style="width: 2.859965px; height: 2.859965px; left: 32.377908%; top: 44.018051%; --dur: 3.4286977005423553s; --delay: 1.2301402970676993s;"></div><div class="star-dot" style="width: 1.851673px; height: 1.851673px; left: 89.582039%; top: 70.431632%; --dur: 2.307548791714455s; --delay: 0.9892254542357275s;"></div><div class="star-dot" style="width: 3.725918px; height: 3.725918px; left: 78.040926%; top: 40.0829%; --dur: 3.1488557902970546s; --delay: 2.2770640125542188s;"></div><div class="star-dot" style="width: 2.923124px; height: 2.923124px; left: 66.83482%; top: 57.589977%; --dur: 2.0891512987093797s; --delay: 2.8036380915404533s;"></div><div class="star-dot" style="width: 1.597393px; height: 1.597393px; left: 10.735343%; top: 72.878275%; --dur: 4.6465845723279635s; --delay: 0.34022280159526996s;"></div><div class="star-dot" style="width: 3.003244px; height: 3.003244px; left: 46.712838%; top: 18.528822%; --dur: 4.5227956399330775s; --delay: 3.635840516477094s;"></div><div class="star-dot" style="width: 3.805608px; height: 3.805608px; left: 21.725813%; top: 3.120119%; --dur: 2.1917390133885957s; --delay: 0.18609412441428175s;"></div><div class="star-dot" style="width: 3.37978px; height: 3.37978px; left: 4.875358%; top: 26.149822%; --dur: 3.3391009691618523s; --delay: 3.8195600753590413s;"></div><div class="star-dot" style="width: 3.261568px; height: 3.261568px; left: 10.513249%; top: 58.969653%; --dur: 2.5758504178347024s; --delay: 1.7191986583894643s;"></div><div class="star-dot" style="width: 3.145754px; height: 3.145754px; left: 38.61504%; top: 17.97134%; --dur: 3.965362381011624s; --delay: 0.5963734495136856s;"></div><div class="star-dot" style="width: 1.557421px; height: 1.557421px; left: 14.236898%; top: 11.773693%; --dur: 3.355709032221645s; --delay: 2.056091159591249s;"></div></div>
+            </div>
+            <div id="frog-area">
+              <div id="frog-grid"><div class="frog-unit big-mode" data-idx="0"><div class="frog-svg-wrap"><svg viewBox="0 0 100 102" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+  <defs>
+    <radialGradient id="bgf0" cx="38%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra -->
+  <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,0.18)"></ellipse>
+
+  <!-- Pernas traseiras -->
+  <path d="M 26 84 Q 10 80 6 91 Q 4 99 14 99 Q 22 99 27 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="5" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="10" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="16" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 74 84 Q 90 80 94 91 Q 96 99 86 99 Q 78 99 73 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="95" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="90" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="84" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Corpo -->
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></ellipse>
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="url(#bgf0)"></ellipse>
+
+  <!-- Barriga -->
+  <ellipse cx="50" cy="80" rx="16" ry="14" fill="#D8F5E2" opacity="0.92"></ellipse>
+
+  <!-- Braços -->
+  <path d="M 27 73 Q 14 75 12 84 Q 14 91 22 90 Q 28 89 30 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="11" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="13" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="18" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 73 73 Q 86 75 88 84 Q 86 91 78 90 Q 72 89 70 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="89" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="87" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="82" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Cabeça -->
+  <circle cx="50" cy="43" r="27" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></circle>
+  <ellipse cx="41" cy="30" rx="13" ry="8" fill="rgba(255,255,255,0.16)" transform="rotate(-20,41,30)"></ellipse>
+
+  <!-- Saliências dos olhos -->
+  <circle cx="33" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+  <circle cx="67" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+
+  <!-- Olho esquerdo -->
+  <circle cx="33" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="34" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="30" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="36" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra esquerda (desliza de cima para baixo) -->
+  <circle class="eyelid eyelid-l-f0" cx="33" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 33px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Olho direito -->
+  <circle cx="67" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="66" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="63" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="69" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra direita -->
+  <circle class="eyelid eyelid-r-f0" cx="67" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 67px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Narinas -->
+  <circle cx="44" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+  <circle cx="56" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+
+  <!-- Boca sorrindo -->
+  <g class="mouth-smile-f0" style="opacity:1">
+    <path d="M 36 56 Q 50 70 64 56" stroke="#3a7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+    <path d="M 36 56 Q 34 60 38 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+    <path d="M 64 56 Q 66 60 62 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Boca aberta (comer mosca / língua pra fora) -->
+  <g class="mouth-open-f0" style="opacity:0">
+    <path d="M 36 56 Q 50 72 64 56 Z" fill="#2a0f0f" stroke="#3a7a3a" stroke-width="2"></path>
+    <ellipse cx="50" cy="63" rx="12" ry="8" fill="#2a0f0f"></ellipse>
+    <!-- Língua rosada (visível ao mostrar língua) -->
+    <ellipse class="tongue-f0" cx="50" cy="69" rx="10" ry="7" fill="#ff7fa0" style="opacity:0"></ellipse>
+    <ellipse class="tongue-f0" cx="50" cy="73" rx="8" ry="4" fill="#ff9ab8" style="opacity:0; pointer-events:none;"></ellipse>
+  </g>
+</svg><div class="fly-eat-overlay"></div></div><div class="lily-pad"></div></div><div class="frog-unit big-mode" data-idx="1"><div class="frog-svg-wrap"><svg viewBox="0 0 100 102" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+  <defs>
+    <radialGradient id="bgf1" cx="38%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra -->
+  <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,0.18)"></ellipse>
+
+  <!-- Pernas traseiras -->
+  <path d="M 26 84 Q 10 80 6 91 Q 4 99 14 99 Q 22 99 27 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="5" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="10" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="16" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 74 84 Q 90 80 94 91 Q 96 99 86 99 Q 78 99 73 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="95" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="90" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="84" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Corpo -->
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></ellipse>
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="url(#bgf1)"></ellipse>
+
+  <!-- Barriga -->
+  <ellipse cx="50" cy="80" rx="16" ry="14" fill="#D8F5E2" opacity="0.92"></ellipse>
+
+  <!-- Braços -->
+  <path d="M 27 73 Q 14 75 12 84 Q 14 91 22 90 Q 28 89 30 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="11" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="13" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="18" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 73 73 Q 86 75 88 84 Q 86 91 78 90 Q 72 89 70 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="89" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="87" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="82" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Cabeça -->
+  <circle cx="50" cy="43" r="27" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></circle>
+  <ellipse cx="41" cy="30" rx="13" ry="8" fill="rgba(255,255,255,0.16)" transform="rotate(-20,41,30)"></ellipse>
+
+  <!-- Saliências dos olhos -->
+  <circle cx="33" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+  <circle cx="67" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+
+  <!-- Olho esquerdo -->
+  <circle cx="33" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="34" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="30" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="36" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra esquerda (desliza de cima para baixo) -->
+  <circle class="eyelid eyelid-l-f1" cx="33" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 33px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Olho direito -->
+  <circle cx="67" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="66" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="63" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="69" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra direita -->
+  <circle class="eyelid eyelid-r-f1" cx="67" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 67px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Narinas -->
+  <circle cx="44" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+  <circle cx="56" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+
+  <!-- Boca sorrindo -->
+  <g class="mouth-smile-f1" style="opacity:1">
+    <path d="M 36 56 Q 50 70 64 56" stroke="#3a7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+    <path d="M 36 56 Q 34 60 38 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+    <path d="M 64 56 Q 66 60 62 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Boca aberta (comer mosca / língua pra fora) -->
+  <g class="mouth-open-f1" style="opacity:0">
+    <path d="M 36 56 Q 50 72 64 56 Z" fill="#2a0f0f" stroke="#3a7a3a" stroke-width="2"></path>
+    <ellipse cx="50" cy="63" rx="12" ry="8" fill="#2a0f0f"></ellipse>
+    <!-- Língua rosada (visível ao mostrar língua) -->
+    <ellipse class="tongue-f1" cx="50" cy="69" rx="10" ry="7" fill="#ff7fa0" style="opacity:0"></ellipse>
+    <ellipse class="tongue-f1" cx="50" cy="73" rx="8" ry="4" fill="#ff9ab8" style="opacity:0; pointer-events:none;"></ellipse>
+  </g>
+</svg><div class="fly-eat-overlay"></div></div><div class="lily-pad"></div></div><div class="frog-unit big-mode" data-idx="2"><div class="frog-svg-wrap"><svg viewBox="0 0 100 102" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+  <defs>
+    <radialGradient id="bgf2" cx="38%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra -->
+  <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,0.18)"></ellipse>
+
+  <!-- Pernas traseiras -->
+  <path d="M 26 84 Q 10 80 6 91 Q 4 99 14 99 Q 22 99 27 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="5" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="10" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="16" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 74 84 Q 90 80 94 91 Q 96 99 86 99 Q 78 99 73 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="95" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="90" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="84" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Corpo -->
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></ellipse>
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="url(#bgf2)"></ellipse>
+
+  <!-- Barriga -->
+  <ellipse cx="50" cy="80" rx="16" ry="14" fill="#D8F5E2" opacity="0.92"></ellipse>
+
+  <!-- Braços -->
+  <path d="M 27 73 Q 14 75 12 84 Q 14 91 22 90 Q 28 89 30 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="11" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="13" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="18" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 73 73 Q 86 75 88 84 Q 86 91 78 90 Q 72 89 70 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="89" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="87" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="82" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Cabeça -->
+  <circle cx="50" cy="43" r="27" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></circle>
+  <ellipse cx="41" cy="30" rx="13" ry="8" fill="rgba(255,255,255,0.16)" transform="rotate(-20,41,30)"></ellipse>
+
+  <!-- Saliências dos olhos -->
+  <circle cx="33" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+  <circle cx="67" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+
+  <!-- Olho esquerdo -->
+  <circle cx="33" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="34" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="30" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="36" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra esquerda (desliza de cima para baixo) -->
+  <circle class="eyelid eyelid-l-f2" cx="33" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 33px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Olho direito -->
+  <circle cx="67" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="66" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="63" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="69" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra direita -->
+  <circle class="eyelid eyelid-r-f2" cx="67" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 67px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Narinas -->
+  <circle cx="44" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+  <circle cx="56" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+
+  <!-- Boca sorrindo -->
+  <g class="mouth-smile-f2" style="opacity:1">
+    <path d="M 36 56 Q 50 70 64 56" stroke="#3a7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+    <path d="M 36 56 Q 34 60 38 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+    <path d="M 64 56 Q 66 60 62 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Boca aberta (comer mosca / língua pra fora) -->
+  <g class="mouth-open-f2" style="opacity:0">
+    <path d="M 36 56 Q 50 72 64 56 Z" fill="#2a0f0f" stroke="#3a7a3a" stroke-width="2"></path>
+    <ellipse cx="50" cy="63" rx="12" ry="8" fill="#2a0f0f"></ellipse>
+    <!-- Língua rosada (visível ao mostrar língua) -->
+    <ellipse class="tongue-f2" cx="50" cy="69" rx="10" ry="7" fill="#ff7fa0" style="opacity:0"></ellipse>
+    <ellipse class="tongue-f2" cx="50" cy="73" rx="8" ry="4" fill="#ff9ab8" style="opacity:0; pointer-events:none;"></ellipse>
+  </g>
+</svg><div class="fly-eat-overlay"></div></div><div class="lily-pad"></div></div><div class="frog-unit big-mode blinking" data-idx="3"><div class="frog-svg-wrap"><svg viewBox="0 0 100 102" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+  <defs>
+    <radialGradient id="bgf3" cx="38%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra -->
+  <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,0.18)"></ellipse>
+
+  <!-- Pernas traseiras -->
+  <path d="M 26 84 Q 10 80 6 91 Q 4 99 14 99 Q 22 99 27 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="5" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="10" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="16" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 74 84 Q 90 80 94 91 Q 96 99 86 99 Q 78 99 73 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="95" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="90" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="84" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Corpo -->
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></ellipse>
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="url(#bgf3)"></ellipse>
+
+  <!-- Barriga -->
+  <ellipse cx="50" cy="80" rx="16" ry="14" fill="#D8F5E2" opacity="0.92"></ellipse>
+
+  <!-- Braços -->
+  <path d="M 27 73 Q 14 75 12 84 Q 14 91 22 90 Q 28 89 30 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="11" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="13" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="18" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 73 73 Q 86 75 88 84 Q 86 91 78 90 Q 72 89 70 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="89" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="87" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="82" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Cabeça -->
+  <circle cx="50" cy="43" r="27" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></circle>
+  <ellipse cx="41" cy="30" rx="13" ry="8" fill="rgba(255,255,255,0.16)" transform="rotate(-20,41,30)"></ellipse>
+
+  <!-- Saliências dos olhos -->
+  <circle cx="33" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+  <circle cx="67" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+
+  <!-- Olho esquerdo -->
+  <circle cx="33" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="34" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="30" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="36" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra esquerda (desliza de cima para baixo) -->
+  <circle class="eyelid eyelid-l-f3" cx="33" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 33px 12px; transform: scaleY(1); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Olho direito -->
+  <circle cx="67" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="66" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="63" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="69" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra direita -->
+  <circle class="eyelid eyelid-r-f3" cx="67" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 67px 12px; transform: scaleY(1); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Narinas -->
+  <circle cx="44" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+  <circle cx="56" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+
+  <!-- Boca sorrindo -->
+  <g class="mouth-smile-f3" style="opacity:1">
+    <path d="M 36 56 Q 50 70 64 56" stroke="#3a7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+    <path d="M 36 56 Q 34 60 38 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+    <path d="M 64 56 Q 66 60 62 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Boca aberta (comer mosca / língua pra fora) -->
+  <g class="mouth-open-f3" style="opacity:0">
+    <path d="M 36 56 Q 50 72 64 56 Z" fill="#2a0f0f" stroke="#3a7a3a" stroke-width="2"></path>
+    <ellipse cx="50" cy="63" rx="12" ry="8" fill="#2a0f0f"></ellipse>
+    <!-- Língua rosada (visível ao mostrar língua) -->
+    <ellipse class="tongue-f3" cx="50" cy="69" rx="10" ry="7" fill="#ff7fa0" style="opacity:0"></ellipse>
+    <ellipse class="tongue-f3" cx="50" cy="73" rx="8" ry="4" fill="#ff9ab8" style="opacity:0; pointer-events:none;"></ellipse>
+  </g>
+</svg><div class="fly-eat-overlay"></div></div><div class="lily-pad"></div></div><div class="frog-unit big-mode" data-idx="4"><div class="frog-svg-wrap"><svg viewBox="0 0 100 102" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+  <defs>
+    <radialGradient id="bgf4" cx="38%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra -->
+  <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,0.18)"></ellipse>
+
+  <!-- Pernas traseiras -->
+  <path d="M 26 84 Q 10 80 6 91 Q 4 99 14 99 Q 22 99 27 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="5" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="10" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="16" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 74 84 Q 90 80 94 91 Q 96 99 86 99 Q 78 99 73 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="95" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="90" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="84" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Corpo -->
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></ellipse>
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="url(#bgf4)"></ellipse>
+
+  <!-- Barriga -->
+  <ellipse cx="50" cy="80" rx="16" ry="14" fill="#D8F5E2" opacity="0.92"></ellipse>
+
+  <!-- Braços -->
+  <path d="M 27 73 Q 14 75 12 84 Q 14 91 22 90 Q 28 89 30 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="11" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="13" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="18" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 73 73 Q 86 75 88 84 Q 86 91 78 90 Q 72 89 70 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="89" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="87" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="82" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Cabeça -->
+  <circle cx="50" cy="43" r="27" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></circle>
+  <ellipse cx="41" cy="30" rx="13" ry="8" fill="rgba(255,255,255,0.16)" transform="rotate(-20,41,30)"></ellipse>
+
+  <!-- Saliências dos olhos -->
+  <circle cx="33" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+  <circle cx="67" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+
+  <!-- Olho esquerdo -->
+  <circle cx="33" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="34" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="30" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="36" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra esquerda (desliza de cima para baixo) -->
+  <circle class="eyelid eyelid-l-f4" cx="33" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 33px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Olho direito -->
+  <circle cx="67" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="66" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="63" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="69" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra direita -->
+  <circle class="eyelid eyelid-r-f4" cx="67" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 67px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Narinas -->
+  <circle cx="44" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+  <circle cx="56" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+
+  <!-- Boca sorrindo -->
+  <g class="mouth-smile-f4" style="opacity:1">
+    <path d="M 36 56 Q 50 70 64 56" stroke="#3a7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+    <path d="M 36 56 Q 34 60 38 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+    <path d="M 64 56 Q 66 60 62 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Boca aberta (comer mosca / língua pra fora) -->
+  <g class="mouth-open-f4" style="opacity:0">
+    <path d="M 36 56 Q 50 72 64 56 Z" fill="#2a0f0f" stroke="#3a7a3a" stroke-width="2"></path>
+    <ellipse cx="50" cy="63" rx="12" ry="8" fill="#2a0f0f"></ellipse>
+    <!-- Língua rosada (visível ao mostrar língua) -->
+    <ellipse class="tongue-f4" cx="50" cy="69" rx="10" ry="7" fill="#ff7fa0" style="opacity:0"></ellipse>
+    <ellipse class="tongue-f4" cx="50" cy="73" rx="8" ry="4" fill="#ff9ab8" style="opacity:0; pointer-events:none;"></ellipse>
+  </g>
+</svg><div class="fly-eat-overlay"></div></div><div class="lily-pad"></div></div><div class="frog-unit big-mode" data-idx="5"><div class="frog-svg-wrap"><svg viewBox="0 0 100 102" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+  <defs>
+    <radialGradient id="bgf5" cx="38%" cy="28%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.28)"></stop>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"></stop>
+    </radialGradient>
+  </defs>
+
+  <!-- Sombra -->
+  <ellipse cx="50" cy="100" rx="22" ry="4" fill="rgba(0,0,0,0.18)"></ellipse>
+
+  <!-- Pernas traseiras -->
+  <path d="M 26 84 Q 10 80 6 91 Q 4 99 14 99 Q 22 99 27 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="5" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="10" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="16" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 74 84 Q 90 80 94 91 Q 96 99 86 99 Q 78 99 73 91" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="95" cy="95" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="90" cy="99" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="84" cy="101" r="3.2" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Corpo -->
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></ellipse>
+  <ellipse cx="50" cy="77" rx="25" ry="21" fill="url(#bgf5)"></ellipse>
+
+  <!-- Barriga -->
+  <ellipse cx="50" cy="80" rx="16" ry="14" fill="#D8F5E2" opacity="0.92"></ellipse>
+
+  <!-- Braços -->
+  <path d="M 27 73 Q 14 75 12 84 Q 14 91 22 90 Q 28 89 30 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="11" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="13" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="18" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <path d="M 73 73 Q 86 75 88 84 Q 86 91 78 90 Q 72 89 70 81" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" stroke-linejoin="round"></path>
+  <circle cx="89" cy="87" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="87" cy="91" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+  <circle cx="82" cy="93" r="2.8" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.2"></circle>
+
+  <!-- Cabeça -->
+  <circle cx="50" cy="43" r="27" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="2"></circle>
+  <ellipse cx="41" cy="30" rx="13" ry="8" fill="rgba(255,255,255,0.16)" transform="rotate(-20,41,30)"></ellipse>
+
+  <!-- Saliências dos olhos -->
+  <circle cx="33" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+  <circle cx="67" cy="25" r="14" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8"></circle>
+
+  <!-- Olho esquerdo -->
+  <circle cx="33" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="34" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="34" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="30" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="36" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra esquerda (desliza de cima para baixo) -->
+  <circle class="eyelid eyelid-l-f5" cx="33" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 33px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Olho direito -->
+  <circle cx="67" cy="25" r="12" fill="#fff"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="#1a6be8"></circle>
+  <circle cx="66" cy="26" r="8.2" fill="rgba(120,180,255,0.25)"></circle>
+  <circle cx="66" cy="27" r="5.2" fill="#06060f"></circle>
+  <circle cx="63" cy="21" r="2.6" fill="rgba(255,255,255,0.92)"></circle>
+  <circle cx="69" cy="29" r="1.2" fill="rgba(255,255,255,0.55)"></circle>
+  <!-- Pálpebra direita -->
+  <circle class="eyelid eyelid-r-f5" cx="67" cy="25" r="13" fill="#7FC9A0" stroke="#3a7a3a" stroke-width="1.8" style="transform-origin: 67px 12px; transform: scaleY(0); transition: transform 0.09s ease-in;"></circle>
+
+  <!-- Narinas -->
+  <circle cx="44" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+  <circle cx="56" cy="48" r="2.8" fill="#5c2a0a" opacity="0.72"></circle>
+
+  <!-- Boca sorrindo -->
+  <g class="mouth-smile-f5" style="opacity:1">
+    <path d="M 36 56 Q 50 70 64 56" stroke="#3a7a3a" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+    <path d="M 36 56 Q 34 60 38 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+    <path d="M 64 56 Q 66 60 62 62" stroke="#3a7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <!-- Boca aberta (comer mosca / língua pra fora) -->
+  <g class="mouth-open-f5" style="opacity:0">
+    <path d="M 36 56 Q 50 72 64 56 Z" fill="#2a0f0f" stroke="#3a7a3a" stroke-width="2"></path>
+    <ellipse cx="50" cy="63" rx="12" ry="8" fill="#2a0f0f"></ellipse>
+    <!-- Língua rosada (visível ao mostrar língua) -->
+    <ellipse class="tongue-f5" cx="50" cy="69" rx="10" ry="7" fill="#ff7fa0" style="opacity:0"></ellipse>
+    <ellipse class="tongue-f5" cx="50" cy="73" rx="8" ry="4" fill="#ff9ab8" style="opacity:0; pointer-events:none;"></ellipse>
+  </g>
+</svg><div class="fly-eat-overlay"></div></div><div class="lily-pad"></div></div></div>
+            </div>
+            <div id="water">
+              <div class="water-ripple" id="water-ripples"></div>
+              <div class="water-bubbles" id="water-bubbles"><div class="bubble" style="width: 4.190322px; height: 4.190322px; left: 86.647863%; bottom: 10.65007%; animation-duration: 6.599089s; animation-delay: 1.043362s;"></div><div class="bubble" style="width: 4.490334px; height: 4.490334px; left: 47.690564%; bottom: 12.500008%; animation-duration: 4.750595s; animation-delay: 2.603566s;"></div><div class="bubble" style="width: 7.480064px; height: 7.480064px; left: 80.658583%; bottom: 14.696092%; animation-duration: 4.372784s; animation-delay: 0.099169s;"></div><div class="bubble" style="width: 9.959837px; height: 9.959837px; left: 36.723374%; bottom: 10.166779%; animation-duration: 6.371456s; animation-delay: 4.885976s;"></div><div class="bubble" style="width: 7.093947px; height: 7.093947px; left: 71.14951%; bottom: 23.80464%; animation-duration: 4.955335s; animation-delay: 3.67153s;"></div><div class="bubble" style="width: 6.801619px; height: 6.801619px; left: 62.20524%; bottom: 20.830019%; animation-duration: 6.30439s; animation-delay: 3.482172s;"></div><div class="bubble" style="width: 9.472765px; height: 9.472765px; left: 74.457299%; bottom: 2.685244%; animation-duration: 3.572082s; animation-delay: 2.151071s;"></div><div class="bubble" style="width: 5.739152px; height: 5.739152px; left: 79.591942%; bottom: 4.097627%; animation-duration: 4.43607s; animation-delay: 2.865833s;"></div><div class="bubble" style="width: 7.204913px; height: 7.204913px; left: 14.070571%; bottom: 27.000375%; animation-duration: 6.115045s; animation-delay: 4.724684s;"></div><div class="bubble" style="width: 4.389536px; height: 4.389536px; left: 52.742229%; bottom: 5.474539%; animation-duration: 4.858019s; animation-delay: 1.773015s;"></div></div>
+              <div class="lily-pad lp-deco lp-d1"></div>
+              <div class="lily-pad lp-deco lp-d2"></div>
+            </div>
+          </div>
+
+          <!-- Painel do timer -->
+          <div id="timer-panel">
+            <div id="progress-bar-wrap" class="">
+              <div id="progress-bar-fill" style="width: 100%;"></div>
+            </div>
+
+            <div id="time-display">
+              <span id="time-text">01:00</span>
+              <span id="time-seconds" class="hidden"></span>
+            </div>
+
+            <div id="timer-controls">
+              <button class="ctrl-btn btn-start" id="btn-start">INICIAR</button>
+              <button class="ctrl-btn btn-pause hidden" id="btn-pause">PAUSAR</button>
+              <button class="ctrl-btn btn-reset" id="btn-reset">REINICIAR</button>
+            </div>
+
+            <div id="motivation-msg" class="hidden"></div>
+          </div>
+
+          <!-- PRIMEIRO → DEPOIS -->
+          <section id="primeiro-depois-section">
+            <h2 class="section-title">PRIMEIRO → DEPOIS</h2>
+
+            <div class="pd-row">
+              <div class="pd-slot pd-slot-primeiro">
+                <div class="pd-slot-header">FAÇO PRIMEIRO</div>
+                <div class="pd-card selected" id="pd-primeiro-task-card">
+                  <div class="pd-task-area" id="pd-primeiro-task">
+      <span class="pd-task-icon">🛁</span>
+      <span class="pd-task-name">Tomar banho</span>
+      <span class="pd-task-mins">1 MIN</span>
+    </div>
+                </div>
+              </div>
+
+              <div class="pd-arrow">→</div>
+
+              <div class="pd-slot pd-slot-depois">
+                <div class="pd-slot-header">DEPOIS POSSO</div>
+                <div class="pd-card selected" id="pd-depois-task-card">
+                  <div class="pd-task-area" id="pd-depois-task"><span class="pd-task-icon">🎮</span><span class="pd-task-name">Brincar</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Picker (compartilhado: tarefa + minutos) -->
+            <div id="pd-task-picker" class="hidden">
+              <div class="pd-picker-title" id="pd-picker-title">ESCOLHER TAREFA</div>
+              <div id="pd-tasks-grid"><button class="pd-task-btn" data-id="teeth">
+      <span class="task-icon">🦷</span>
+      <span>Escovar dentes</span>
+    </button><button class="pd-task-btn" data-id="bath">
+      <span class="task-icon">🛁</span>
+      <span>Tomar banho</span>
+    </button><button class="pd-task-btn" data-id="toys">
+      <span class="task-icon">🧸</span>
+      <span>Guardar brinquedos</span>
+    </button><button class="pd-task-btn" data-id="homework">
+      <span class="task-icon">📚</span>
+      <span>Fazer tarefa</span>
+    </button><button class="pd-task-btn" data-id="snack">
+      <span class="task-icon">🍪</span>
+      <span>Hora do lanche</span>
+    </button><button class="pd-task-btn" data-id="play">
+      <span class="task-icon">🎮</span>
+      <span>Brincar</span>
+    </button></div>
+              <div id="pd-minute-section" class="hidden">
+                <div id="pd-minute-grid"><button class="pd-minute-btn" data-min="1">1 MIN</button><button class="pd-minute-btn" data-min="3">3 MIN</button><button class="pd-minute-btn" data-min="5">5 MIN</button><button class="pd-minute-btn" data-min="10">10 MIN</button><button class="pd-minute-btn" data-min="15">15 MIN</button><button class="pd-minute-btn" data-min="20">20 MIN</button><button class="pd-minute-btn" data-min="30">30 MIN</button></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- OBJETIVOS -->
+          <section id="objetivos-section">
+            <h2 class="section-title">MEUS OBJETIVOS</h2>
+            <p class="section-sub">TOQUE PARA MARCAR FEITO · SEGURE PARA REMOVER</p>
+            <div id="objetivos-grid"><div class="objetivo-card obj-empty" style="--obj-color: #FF9A3C; --obj-dark: #c96800;">
+        <div class="obj-label">OBJETIVO 1</div>
+        <div class="obj-add-icon">+</div>
+        <div class="obj-add-text">ADICIONAR</div>
+      </div><div class="objetivo-card obj-empty" style="--obj-color: #06D6A0; --obj-dark: #048a67;">
+        <div class="obj-label">OBJETIVO 2</div>
+        <div class="obj-add-icon">+</div>
+        <div class="obj-add-text">ADICIONAR</div>
+      </div><div class="objetivo-card obj-empty" style="--obj-color: #118AB2; --obj-dark: #0a5e80;">
+        <div class="obj-label">OBJETIVO 3</div>
+        <div class="obj-add-icon">+</div>
+        <div class="obj-add-text">ADICIONAR</div>
+      </div></div>
+          </section>
+
+          <footer class="app-footer">
+            <p>Desenvolvido por <strong>Mayron Simões</strong></p>
+            <p>Psicólogo · CRP 16/7824</p>
+            <p>(27) 98132-3519 · @mayronsimoes_psi</p>
+            <p>psimayronsimoes@gmail.com</p>
+          </footer>
+
+        </div>
+      </div><!-- #tab-timer -->
+
+      <!-- ===== TAB: ESTRELAS ===== -->
+      <div id="tab-estrelas" class="tab-panel">
+        <div class="tab-scroll tab-scroll-padded">
+          <h2 class="section-title page-title">⭐ MINHAS ESTRELAS</h2>
+
+          <div id="stars-panel">
+            <div id="stars-display"><span class="star-item" style="animation-delay: 0s;">⭐</span></div>
+            <div id="stars-count">1 estrela</div>
+          </div>
+
+          <section id="registro-section">
+            <h3 class="subsection-title">📋 REGISTRO DO DIA</h3>
+            <div id="registro-list"><div class="registro-dia">
+      <div class="registro-data">📅 19/06/2026</div>
+      <div class="registro-bloco-title">TAREFAS</div><div class="registro-vazio">Nenhuma tarefa concluída</div>
+      <div class="registro-bloco-title">ESTRELAS</div><div class="registro-item">⭐ 1 MIN — 08:40</div>
+    </div></div>
+            <div id="registro-empty" class="hidden">
+              <p>NENHUM REGISTRO AINDA.<br>COMPLETE TAREFAS E TIMERS PARA COMEÇAR! 🐸</p>
+            </div>
+          </section>
+
+          <div id="reset-stars-wrap">
+            <button id="btn-reset-all">🗑️ ZERAR ESTRELAS E REGISTROS</button>
+          </div>
+
+          <footer class="app-footer">
+            <p>Desenvolvido por <strong>Mayron Simões</strong></p>
+            <p>Psicólogo · CRP 16/7824</p>
+            <p>(27) 98132-3519 · @mayronsimoes_psi</p>
+            <p>psimayronsimoes@gmail.com</p>
+          </footer>
+        </div>
+      </div><!-- #tab-estrelas -->
+
+
+      <!-- ===== TAB: CONFIGURAÇÕES ===== -->
+      <div id="tab-config" class="tab-panel">
+        <div class="tab-scroll tab-scroll-padded">
+          <h2 class="section-title page-title">⚙️ CONFIGURAÇÕES</h2>
+
+          <!-- Modo escuro -->
+          <div class="config-block">
+            <button id="btn-night" class="config-night-btn">
+              <span class="config-night-icon" id="night-btn-icon">🌙</span>
+              <span class="config-night-text">MODO ESCURO</span>
+              <span class="config-night-badge" id="night-status">OFF</span>
+            </button>
+          </div>
+
+          <!-- Cor do sapinho -->
+          <div class="config-block">
+            <div class="config-block-title">COR DO SAPINHO</div>
+            <div id="frog-color-selector">
+              <button class="color-btn active" data-color="green" title="Verde" style="background:#7FC9A0"></button>
+              <button class="color-btn" data-color="blue" title="Azul" style="background:#BFE0F2"></button>
+              <button class="color-btn" data-color="rainbow" title="Arco-íris" style="background:linear-gradient(135deg,#FFE066,#7FC9A0,#BFE0F2,#FFB3C6,#FFB347)"></button>
+            </div>
+          </div>
+
+          <!-- Acessibilidade -->
+          <div class="config-block">
+            <div class="config-block-title">ACESSIBILIDADE</div>
+            <div class="settings-list">
+              <label class="setting-item">
+                <span>MOSTRAR SEGUNDOS</span>
+                <input type="checkbox" id="setting-show-seconds">
+              </label>
+              <label class="setting-item">
+                <span>BARRA DE PROGRESSO</span>
+                <input type="checkbox" id="setting-show-progress">
+              </label>
+              <label class="setting-item">
+                <span>VIBRAÇÃO</span>
+                <input type="checkbox" id="setting-vibration">
+              </label>
+              <label class="setting-item">
+                <span>EFEITOS SONOROS</span>
+                <input type="checkbox" id="setting-sound-effects">
+              </label>
+              <label class="setting-item">
+                <span>REDUZIR ANIMAÇÕES</span>
+                <input type="checkbox" id="setting-reduce-motion">
+              </label>
+              <label class="setting-item">
+                <span>ALTO CONTRASTE</span>
+                <input type="checkbox" id="setting-high-contrast">
+              </label>
+            </div>
+          </div>
+
+          <!-- Editor de tarefas -->
+          <div class="config-block">
+            <div class="config-block-title">EDITAR TAREFAS</div>
+            <div id="task-editor">
+    <div class="task-editor-row">
+      <button class="task-emoji-btn" data-idx="0" title="Trocar ícone">🦷</button>
+      <input class="task-name-input" data-idx="0" value="Escovar dentes" maxlength="22">
+    </div>
+  
+    <div class="task-editor-row">
+      <button class="task-emoji-btn" data-idx="1" title="Trocar ícone">🛁</button>
+      <input class="task-name-input" data-idx="1" value="Tomar banho" maxlength="22">
+    </div>
+  
+    <div class="task-editor-row">
+      <button class="task-emoji-btn" data-idx="2" title="Trocar ícone">🧸</button>
+      <input class="task-name-input" data-idx="2" value="Guardar brinquedos" maxlength="22">
+    </div>
+  
+    <div class="task-editor-row">
+      <button class="task-emoji-btn" data-idx="3" title="Trocar ícone">📚</button>
+      <input class="task-name-input" data-idx="3" value="Fazer tarefa" maxlength="22">
+    </div>
+  
+    <div class="task-editor-row">
+      <button class="task-emoji-btn" data-idx="4" title="Trocar ícone">🍪</button>
+      <input class="task-name-input" data-idx="4" value="Hora do lanche" maxlength="22">
+    </div>
+  
+    <div class="task-editor-row">
+      <button class="task-emoji-btn" data-idx="5" title="Trocar ícone">🎮</button>
+      <input class="task-name-input" data-idx="5" value="Brincar" maxlength="22">
+    </div>
+  </div>
+          </div>
+
+          <footer class="app-footer">
+            <p>Desenvolvido por <strong>Mayron Simões</strong></p>
+            <p>Psicólogo · CRP 16/7824</p>
+            <p>(27) 98132-3519 · @mayronsimoes_psi</p>
+            <p>psimayronsimoes@gmail.com</p>
+          </footer>
+
+        </div>
+      </div><!-- #tab-config -->
+
+
+      <!-- Navegação inferior -->
+      <nav id="tab-nav">
+        <button class="tab-btn active" data-tab="timer">
+          <span class="tab-icon">🐸</span>
+          <span class="tab-label">TIMER</span>
+        </button>
+        <button class="tab-btn" data-tab="estrelas">
+          <span class="tab-icon">⭐</span>
+          <span class="tab-label">ESTRELAS</span>
+        </button>
+        <button class="tab-btn" data-tab="config">
+          <span class="tab-icon">⚙️</span>
+          <span class="tab-label">CONFIG</span>
+        </button>
+      </nav>
+
+    </div><!-- #app -->
+
+    <!-- ===== MODALS ===== -->
+
+    <!-- Personalizar tempo -->
+    <div class="modal-overlay hidden" id="modal-custom">
+      <div class="modal">
+        <h3>PERSONALIZAR TEMPO</h3>
+        <div class="custom-input-wrap">
+          <input type="range" id="custom-range" min="1" max="60" value="5">
+          <div id="custom-range-label">5 MINUTOS</div>
+        </div>
+        <div class="modal-btns">
+          <button class="modal-btn btn-confirm" id="btn-custom-confirm">CONFIRMAR</button>
+          <button class="modal-btn btn-cancel" id="btn-custom-cancel">CANCELAR</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Parabéns -->
+    <div class="modal-overlay hidden" id="modal-congrats">
+      <div class="modal modal-congrats">
+        <div id="congrats-stars">⭐</div>
+        <h3>PARABÉNS! 🎉</h3>
+        <p id="congrats-msg">VOCÊ COMPLETOU O TIMER!</p>
+        <div id="confetti-container"></div>
+        <button class="modal-btn btn-confirm" id="btn-congrats-ok">ÓTIMO!</button>
+      </div>
+    </div>
+
+    <!-- Emoji picker (para editor de tarefas) -->
+    <div class="modal-overlay hidden" id="modal-emoji">
+      <div class="modal">
+        <h3>ESCOLHER ÍCONE</h3>
+        <div id="emoji-grid"></div>
+        <div class="modal-btns">
+          <button class="modal-btn btn-cancel" id="btn-emoji-cancel">CANCELAR</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Balão de fala -->
+    <div class="frog-speech hidden" id="frog-speech"></div>
+
+</body></html>
